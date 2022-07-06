@@ -71,6 +71,7 @@ app.get('/ended', (req, res) => {
 })
 
 app.get('/:room', (req, res) => {
+    console.log(req.user.username);
     res.render('index', { roomid: req.params.room, user: req.user }); //to get roomid in index.ejs
 })
 
