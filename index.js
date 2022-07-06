@@ -20,11 +20,11 @@ const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const session = require('express-session')
-
-// set up session cookies
+require('dotenv').config()
+    // set up session cookies
 app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
-    keys: [keys.session.cookieKey]
+    keys: [process.env.cookieKey]
 }));
 
 // initialize passport
@@ -32,7 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //connect to mongodb
-mongoose.connect(keys.mongoDB.dbURI, () => {
+mongoose.connect(process.env.dbURI, () => {
     console.log('connected to monodb');
 });
 
@@ -46,7 +46,7 @@ app.use('/profile', profileRoutes);
 //////backend part from here to down ///////////////////
 //837945080167-2d174daavis4mfqhvnecjmstigtmvl8l.apps.googleusercontent.com
 //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
-const port = process.port.env || 3000;
+const port = process.env.port || 3000;
 const host = 'localhost';
 
 app.set('view engine', 'ejs');
@@ -129,7 +129,7 @@ const emailTransporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: "dkps0081@gmail.com",
-        pass: keys.passcode.passkey
+        pass: process.env.passkey
     },
     debug: false,
     logger: true
@@ -142,7 +142,7 @@ app.post('/invite', (req, res) => {
         from: 'dkps0081@gmail.com',
         to: req.body.xyz,
         subject: 'Sending Email using Node.js',
-        text: 'https://localhost:3000/abc/zxy-ght',
+        text: 'http://localhost:3000/abc-zxy-ght',
         body: 'Join khokhaMeets using this url'
     };
     emailTransporter.sendMail(mailOptions, function(error, info) {
