@@ -1,124 +1,6 @@
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Homepage</title>
-    <style>
-        body {
-            font-family: arial;
-            margin: 0;
-        }
-        
-        nav {
-            background: #3b5ebf;
-            padding: 20px 10px;
-        }
-        
-        nav ul {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 0;
-        }
-        
-        nav li {
-            list-style-type: none;
-            display: inline-block;
-            margin: 0 10px 0 0;
-        }
-        
-        nav a {
-            color: #fff;
-            font-size: 18px;
-            background: rgba(255, 255, 255, 0.2);
-            text-decoration: none;
-            padding: 10px;
-            display: block;
-        }
-        
-        main,
-        header {
-            max-width: 960px;
-            margin: 30px auto;
-            padding: 0 10px;
-            color: #333;
-        }
-        
-        main img {
-            width: 40px;
-            margin-right: 10px;
-            position: relative;
-            top: 12px;
-        }
-        
-        main p {
-            display: inline-block;
-        }
-        
-        #logo {
-            position: absolute;
-            justify-content: center;
-            height: 250px;
-            width: 450px;
-            margin-left: 60vw;
-        }
-    </style>
-</head>
-
-<body>
-    <nav>
-        <ul>
-            <% if (user) { %>
-                <li><a href="/auth/logout">Log out</a></li>
-                <% } else { %>
-                    <li><a href="/auth/login">Login</a></li>
-                    <% } %>
-        </ul>
-    </nav>
-    <header>
-        <h1>Welcome to your profile,
-            <%= user.username %>
-        </h1>
-
-    </header>
-    <main>
-        <img src="<%= user.thumbnail %>" />
-    </main>
-    <div>
-        <a href="/newMeeting">
-            new meet
-        </a>
-        
-        <div>
-            <span>Schedule a meet</span>
-            <form action="/invite" method="POST">
-                <input type="email" name="xyz" placeholder="Type email here">
-                <button type="submit">submit</button>
-            </form>
-        </div>
-
-        
-        <div class="input-box">
-            <span class="material-icons"></span><input placeholder="Enter meet link" id="meeting-link" class="meeting-link"></input>
-            <button id="join" class="join" onclick="window.location = '/' + document.getElementById('meeting-link').value">
-            <span class="material-icons hover:tran">join meet</span></button>
-        </div>
-        <div>
-            <img src="gm.jpg" id="logo">
-        </div>
-    </div>
-
-
-
-</body>
-
-</html> -->
-
-
-
 <!-- ////////////////////// -->
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+
 <html lang="en" dir="ltr">
 
 <head>
@@ -282,20 +164,13 @@
             </div>
 
         </form>
-        <!-- <div class="txt_field">
-          <input type="password" required>
-          <span></span>
-          <label>Password</label>
-        </div> -->
-        <!-- <div class="pass"><a>Join </a></div> -->
-        <input type="submit" value="Join Via Meeting Link" onclick="window.location = '/' + document.getElementById('meeting-link').value">
+
         <!-- //<input type="submit" value="Schedule Meet" onclick="submitBtn1()"> -->
 
-        <input type="submit" value="Join Instant Meet" onclick="submitBtn2()">
 
 
 
-        <form action="/invite" method="POST">
+        <form action="/invite" method="POST" id="myform">
             <div class="txt_field">
 
                 <input type="email" id="email-id" name="xyz" class="email-link">
@@ -303,8 +178,13 @@
                 <span></span>
                 <label>Enter Email</label>
             </div>
-            <input type="submit" name="xyz" value="Schedule Meet" class="vgg">
+            <!-- <input type="submit" name="xyz" value="Schedule Meet" class="vgg"> -->
         </form>
+        <input type="submit" value="Join Via Meeting Link" onclick="window.location = '/' + document.getElementById('meeting-link').value">
+
+        <input form="myform" type="submit" name="xyz" value="Schedule Meet" class="vgg">
+        <input type="submit" value="Join Instant Meet" onclick="submitBtn2()">
+
         <!-- <div height="7px"></div> -->
         <div class="signup_link">
             <ul>
