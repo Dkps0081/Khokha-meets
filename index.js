@@ -46,7 +46,7 @@ app.use('/profile', profileRoutes);
 //////backend part from here to down ///////////////////
 //837945080167-2d174daavis4mfqhvnecjmstigtmvl8l.apps.googleusercontent.com
 //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
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 const host = 'localhost';
 
 app.set('view engine', 'ejs');
