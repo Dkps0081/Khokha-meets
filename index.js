@@ -17,7 +17,7 @@ const profileRoutes = require('./routes/profile-routes');
 
 
 const mongoose = require('mongoose');
-const keys = require('./config/keys');
+//const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const session = require('express-session')
@@ -47,8 +47,7 @@ app.use('/profile', profileRoutes);
 //////backend part from here to down ///////////////////
 //837945080167-2d174daavis4mfqhvnecjmstigtmvl8l.apps.googleusercontent.com
 //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
-const port = 3000;
-const host = 'localhost';
+
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -79,9 +78,9 @@ app.get('/:room', (req, res) => {
 
 
 
-
-server.listen(port, host, () => {
-    console.log(`listening to port:${port},host:${host}`);
+const port = process.env.PORT || 4000;
+app.listen(port, () => {
+    console.log(`listening to port:${port}`);
 });
 
 io.on('connection', socket => {
