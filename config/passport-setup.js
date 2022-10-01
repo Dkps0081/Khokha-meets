@@ -18,8 +18,8 @@ passport.use(
     new GoogleStrategy({
         //diff google strat
         callbackURL: '/auth/google/me',
-        clientID: keys.google.clientID,
-        clientSecret: keys.google.clientSecret
+        clientID: process.env.clientID,
+        clientSecret: process.env.clientSecret
     }, (accessToken, refreshToken, profile, done) => {
         //passport call back
         // console.log('passport call back fired')

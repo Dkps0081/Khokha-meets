@@ -7,13 +7,14 @@ const socketio = require('socket.io');
 const io = socketio(server);
 const { v4: uuidv4 } = require('uuid');
 const bodyParser = require('body-parser');
-
+require('dotenv').config()
 
 
 //////google authenticatin.////////////
 const passportSetup = require('./config/passport-setup');
 const authRoutes = require('./routes/auth_routes');
 const profileRoutes = require('./routes/profile-routes');
+
 
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
@@ -24,7 +25,7 @@ const session = require('express-session')
 // set up session cookies
 app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
-    keys: [keys.session.cookieKey]
+    keys: [process.env.cookieKey]
 }));
 
 // initialize passport
@@ -32,7 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //connect to mongodb
-mongoose.connect(keys.mongoDB.dbURI, () => {
+mongoose.connect(process.env.dbURI, () => {
     console.log('connected to monodb');
 });
 
@@ -130,7 +131,7 @@ const emailTransporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: "dkps0081@gmail.com",
-        pass: keys.passcode.passkey
+        pass: process.env.passkey
     },
     debug: false,
     logger: true
