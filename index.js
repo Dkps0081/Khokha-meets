@@ -15,7 +15,6 @@ const passportSetup = require('./config/passport-setup');
 const authRoutes = require('./routes/auth_routes');
 const profileRoutes = require('./routes/profile-routes');
 
-
 const mongoose = require('mongoose');
 //const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
@@ -71,16 +70,16 @@ app.get('/ended', (req, res) => {
 })
 
 app.get('/:room', (req, res) => {
-    console.log(req.user.username);
     res.render('index', { roomid: req.params.room, user: req.user }); //to get roomid in index.ejs
 })
 
 
+//server.listen(3000)
 
-
-const port = process.env.PORT || 4000;
-app.listen(port, () => {
-    console.log(`listening to port:${port}`);
+const port = process.env.PORT;
+const host = process.env.HOST
+server.listen(port, host, () => {
+    console.log(`listening to port:${port},host:${host}`);
 });
 
 io.on('connection', socket => {
